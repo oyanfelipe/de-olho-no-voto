@@ -1,0 +1,16 @@
+[
+  {
+    "nome": "Maria Silva",
+    "partido": "XYZ",
+    "estado": "RJ",
+    "votou_a_favor": ["PL da Pedofilia"],
+    "votou_contra": ["PL das Fake News"]
+  },
+  {
+    "nome": "João Costa",
+    "partido": "ABC",
+    "estado": "SP",
+    "votou_a_favor": ["PL das Fake News"],
+    "votou_contra": ["PL da Pedofilia"]
+  }
+]

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>De Olho no Voto</title>
+
+  <!-- Fonte Nunito Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="topbar" role="banner">
+    <div class="wrap">
+      <div class="brand">De Olho no Voto</div>
+    </div>
+  </header>
+
+  <main class="wrap main" role="main">
+    <section class="search-hero" aria-labelledby="search-label">
+      <h1 id="search-label" class="visually-hidden">Pesquisar deputado</h1>
+
+      <div class="search-box">
+        <input id="searchInput" type="search" placeholder="Digite o nome do deputado" aria-label="Pesquisar deputado" autocomplete="off" />
+      </div>
+
+      <div id="suggestions" class="suggestions" role="listbox" aria-live="polite"></div>
+
+      <p class="hint">Ou escolha um projeto abaixo</p>
+
+      <div class="projects-row" aria-label="Projetos">
+        <a class="project-btn" href="projetos/pl1904.html">PL 1904/2024 — Aborto e direitos (PL 1904)</a>
+        <!-- futuramente mais botões de projeto -->
+      </div>
+    </section>
+
+    <section class="explain" aria-labelledby="about-title">
+      <h2 id="about-title">Como funciona</h2>
+      <p>Pesquise um deputado pelo nome. A busca mostra resultados enquanto você digita. Clique no deputado para ver em quais projetos ele(a) votou — neste protótipo há a página do <strong>PL 1904/2024</strong>.</p>
+      <p class="small">Todos os dados apresentados são públicos; substitua o link da fonte na página do projeto pelo registro oficial da Câmara.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <small>De Olho no Voto — projeto independente. Dados públicos. Corrija erros abrindo uma issue.</small>
+    </div>
+  </footer>
+
+  <script>
+  // index.js inline to keep fácil de colar
+  (async function(){
+    const searchInput = document.getElementById('searchInput');
+    const suggestions = document.getElementById('suggestions');
+
+    let DATA = null;
+    try {
+      const r = await fetch('data.json');
+      DATA = await r.json();
+    } catch (e) {
+      suggestions.innerHTML = '<div class="err">Erro ao carregar dados.</div>';
+      console.error(e);
+      return;
+    }
+
+    // Build name -> {party, projects[]}
+    const nameIndex = {};
+    DATA.projetos.forEach(proj => {
+      const pid = proj.id;
+      const title = proj.titulo;
+      const votos = proj.votos || {};
+      Object.keys(votos).forEach(party=>{
+        votos[party].forEach(name=>{
+          const key = name.trim();
+          if (!nameIndex[key]){
+            nameIndex[key] = { name: key, parties: new Set(), projects: new Set() };
+          }
+          nameIndex[key].parties.add(party);
+          nameIndex[key].projects.add(pid);
+        });
+      });
+    });
+
+    // convert sets to arrays
+    Object.values(nameIndex).forEach(obj => {
+      obj.parties = Array.from(obj.parties);
+      obj.projects = Array.from(obj.projects);
+    });
+
+    // helper render suggestions
+    function renderSuggestions(list, q){
+      suggestions.innerHTML = '';
+      if (list.length === 0) {
+        suggestions.innerHTML = '<div class="nores">Nenhum deputado encontrado.</div>';
+        return;
+      }
+      list.slice(0,10).forEach(item=>{
+        const div = document.createElement('div');
+        div.className = 'suggestion';
+        div.setAttribute('role','option');
+        // highlight match
+        const idx = item.name.toLowerCase().indexOf(q.toLowerCase());
+        const display = idx === -1 ? escapeHtml(item.name) :
+          escapeHtml(item.name.substring(0,idx)) + '<mark>' + escapeHtml(item.name.substring(idx, idx+q.length)) + '</mark>' + escapeHtml(item.name.substring(idx+q.length));
+        div.innerHTML = `<div class="s-left">${display}<div class="s-meta">${escapeHtml(item.parties.join(' / '))}</div></div><div class="s-right">Ver</div>`;
+        div.addEventListener('click', ()=> {
+          // navigate to first project the deputy participates in and pass query param
+          const targetProject = item.projects[0] || 'pl1904';
+          window.location.href = `${targetProject === 'pl1904' ? 'pl1904.html' : 'pl1904.html'}?q=${encodeURIComponent(item.name)}`;
+        });
+        suggestions.appendChild(div);
+      });
+    }
+
+    // input events
+    let typingTimer = null;
+    searchInput.addEventListener('input', (e)=>{
+      const q = e.target.value.trim();
+      clearTimeout(typingTimer);
+      if (q.length < 2){
+        suggestions.innerHTML = '';
+        return;
+      }
+      // debounce slight
+      typingTimer = setTimeout(()=>{
+        const results = Object.values(nameIndex).filter(n => n.name.toLowerCase().includes(q.toLowerCase()));
+        renderSuggestions(results, q);
+      }, 120);
+    });
+
+    // keyboard: Enter on first suggestion
+    searchInput.addEventListener('keydown', (e)=>{
+      if (e.key === 'Enter'){
+        const q = searchInput.value.trim();
+        if (!q) return;
+        const found = Object.values(nameIndex).find(n => n.name.toLowerCase() === q.toLowerCase());
+        if (found) {
+          const tp = found.projects[0] || 'pl1904';
+          window.location.href = `${tp === 'pl1904' ? 'pl1904.html' : 'pl1904.html'}?q=${encodeURIComponent(found.name)}`;
+        }
+      }
+    });
+
+    // escape html
+    function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+  })();
+  </script>
+</body>
+</html>
