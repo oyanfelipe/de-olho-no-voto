@@ -1,0 +1,160 @@
+body {
+  font-family: "Unito Sans", Arial, sans-serif;
+  background-color: #f6f9fc;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #222;
+}
+
+header {
+  background-color: #004aad;
+  color: white;
+  padding: 40px 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.subtitulo {
+  margin: 10px 0 20px;
+  font-size: 1em;
+}
+
+input#busca {
+  width: 80%;
+  max-width: 500px;
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1em;
+  text-align: center;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* --- Projetos --- */
+#projetos {
+  margin: 40px auto;
+  width: 90%;
+  max-width: 900px;
+}
+
+.titulo-section {
+  text-align: left;
+  margin-bottom: 20px;
+  color: #004aad;
+  font-weight: 600;
+}
+
+.lista-projetos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card-projeto {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  padding: 20px;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-projeto:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+}
+
+.card-projeto h3 {
+  color: #004aad;
+  margin-top: 0;
+}
+
+.card-projeto p {
+  font-size: 0.95em;
+  color: #444;
+}
+
+.card-projeto a {
+  display: inline-block;
+  margin-top: 12px;
+  text-decoration: none;
+  color: white;
+  background-color: #004aad;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 0.9em;
+  transition: background 0.2s ease;
+}
+
+.card-projeto a:hover {
+  background-color: #00327d;
+}
+
+/* --- Resultados de busca --- */
+.resultados {
+  margin: 40px auto;
+  width: 90%;
+  max-width: 700px;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.deputado {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.deputado:last-child {
+  border-bottom: none;
+}
+
+h2 {
+  color: #004aad;
+}
+
+.lista-votos {
+  list-style: none;
+  padding: 0;
+}
+
+.lista-votos li {
+  margin: 4px 0;
+}
+
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  background: #004aad;
+  color: white;
+  font-size: 0.9em;
+}
+.deputado-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+}
+
+.deputado-card img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+.deputado-card .info h2 {
+  margin: 0 0 5px 0;
+  font-size: 1.3em;
+}

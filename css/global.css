@@ -1,0 +1,33 @@
+/* css/global.css */
+
+/* Fonte e cores principais */
+body {
+  font-family: 'UnitoSense', sans-serif;
+background-color: pink;  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #1a73e8;
+}
+
+/* Títulos */
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+/* Botões */
+button, .btn {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+button:hover, .btn:hover {
+  background-color: #1669c1;
+}
