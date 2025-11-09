@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PEC 3/2021 — De Olho no Voto</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/projeto.css">
+  
+</head>
+<body>
+
+  <header>
+    <h1>PEC 3/2021 — Entenda o projeto</h1>
+  </header>
+
+  <div class="container">
+
+    <a href="../index.html" class="back-btn">← Voltar à página inicial</a>
+
+    <div class="description">
+  <p>A <strong>PEC 3/2021</strong> é uma proposta de Emenda à Constituição que propunha alterar regras sobre investigação, prisão e responsabilização de parlamentares. O texto ficou conhecido publicamente como “PEC da Bandidagem”, expressão usada na imprensa e nas redes sociais.</p>
+
+  <p>Pela proposta, medidas judiciais contra deputados e senadores — inclusive prisões em flagrante — só poderiam ser executadas após autorização prévia da respectiva Casa Legislativa (Câmara ou Senado). As votações internas sobre essas autorizações seriam realizadas em voto secreto.</p>
+
+  <p>O texto também previa a ampliação do foro especial, estendendo proteção semelhante a presidentes nacionais de partidos políticos com representação no Congresso Nacional.</p>
+
+  <p>Especialistas em direito constitucional e transparência apontaram que as mudanças poderiam reduzir a efetividade dos mecanismos de responsabilização política e judicial, dificultando a investigação e eventual punição de crimes cometidos por autoridades eleitas.</p>
+
+  <p>Organizações da sociedade civil, entidades jurídicas e movimentos pela transparência manifestaram preocupação quanto a potenciais impactos na igualdade perante a lei, na transparência institucional e na confiança pública nas instituições democráticas.</p>
+
+  <p>Em função da repercussão pública e das discussões no Congresso, a Comissão de Constituição e Justiça (CCJ) do Senado analisou a proposta e, posteriormente, a tramitação foi interrompida e o texto foi arquivado.</p>
+
+  <p>O caso ilustra a importância do acompanhamento cidadão das votações parlamentares e da verificação do posicionamento dos representantes eleitos sobre propostas que alteram regras de responsabilização e fiscalização política.</p>
+</div>
+
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Pesquise o nome de um deputado...">
+    </div>
+
+    <div id="deputadosContainer"></div>
+  </div>
+
+  <script>
+  const deputadosPorPartido = {
+    "PL": [
+      "Adilson Barroso", "Alberto Fraga", "Altineu Côrtes", "André Fernandes", "André Ferreira", "Antonio Carlos Rodrigues",
+      "Bia Kicis", "Bibo Nunes", "Cabo Gilberto Silva", "Capitão Alberto Neto", "Capitão Alden", "Carlos Jordy",
+      "Caroline de Toni", "Chris Tonietto", "Coronel Chrisóstomo", "Coronel Meira", "Daniel Agrobom", "Daniel Freitas",
+      "Daniela Reinehr", "Delegado Caveira", "Delegado Paulo Bilynskyj", "Delegado Ramagem", "Delegado Éder Mauro",
+      "Detinha", "Domingos Sávio", "Dr. Jaziel", "Eli Borges", "Eros Biondini", "Felipe Barros", "Filipe Martins",
+      "Fernando Rodolfo", "General Girão", "General Pazuello", "Giacobo", "Gilvan da Federal", "Giovani Cherini",
+      "Gustavo Gayer", "Helio Lopes", "Jefferson Campos", "Joaquim Passarinho", "Josimar Maranhãozinho", "José Medeiros",
+      "Júlia Zanatta", "Junior Amaral", "Junior Lourenço", "Lincoln Portela", "Luiz Carlos Motta", "Marcelo Álvaro Antônio",
+      "Marcelo Moraes", "Marcio Alvino", "Marcos Pollon", "Mario Frias", "Matheus Noronha", "Mauricio do Vôlei",
+      "Miguel Lombardi", "Missionário José Olímpio", "Nelson Barbudo", "Nikolas Ferreira", "Osmar Terra",
+      "Pastor Eurico", "Pastor Gil", "Paulo Freire Costa", "Pinheirinho", "Pr. Marco Feliciano", "Professor Alcides",
+      "Ricardo Guidi", "Ricardo Guidi", "Roberto Monteiro Pai", "Roberta Roma", "Rodolfo Nogueira", "Rodrigo da Zaeli",
+      "Rosana Valle", "Rosângela Reis", "Sanderson", "Sargento Gonçalves", "Soraia Santos", "Sóstenes Cavalcante",
+      "Tiririca", "Vinicius Gurgel", "Wellington Roberto", "Zé Trovão", "Zé Vitor", "Zucco"
+    ],
+    "União Brasil": [
+      "Arthur Oliveira Maia", "Benes Leocádio", "Carla Dickson", "Carlos Henrique Gaguim", "Coronel Assis",
+      "Coronel Fernanda", "Coronel Ulysses", "Cristiane Lopes", "Dal Barreto", "Damião Feliciano", "Dani Cunha",
+      "Daniel do Waginho", "Danielle Forte", "David Soares", "Dayany Bittencourt", "Delegado Marcelo Freitas",
+      "Delegado Matheus Laiola", "Dr. Fernando Máximo", "Dr. Zacharias Calil", "Eduardo Velloso", "Elmar Nascimento",
+      "Fabio Schiochet", "Fausto Santos Jr.", "Felipe Becari", "Felipe Francischini", "Fernanda Pessoa",
+      "Fernando Coelho Filho", "General Mendes", "Gisela Simona", "Geraldo Mendes", "José Nelto", "José Rocha",
+      "Juninho do Pneu", "Juscelino Filho", "Leur Lomanto Júnior", "Luciano Bivar", "Luiz Carlos Busato", "Marangoni",
+      "Marcos Soares", "Mauricio Carvalho", "Meire Serafim", "Mendonça Filho", "Misael Serafim", "Moses Rodrigues",
+      "Murilo Gouvea", "Nicoletti", "Padovani", "Pastor Claudio Mariano", "Pastor Diniz", "Paulo Azi",
+      "Pauderney Avelino", "Pedro Lucas Fernandes", "Rafael Simoes", "Ricardo Abrão", "Rodrigo de Castro",
+      "Rodrigo Valadares", "Silvye Alves"
+    ],
+    "Republicanos": [
+      "Adail Filho", "Albuquerque", "Aline Gurgel", "Aluisio Mendes", "Amaro Neto", "Antonio Andrade", "Antônia Lúcia",
+      "Augusto Coutinho", "Celso Russomanno", "Defensor Stélio Dener", "Diego Garcia", "Ely Santos", "Euclydes Pettersen",
+      "Fernando Monteiro", "Franciane Bayer", "Fred Linhares", "Gabriel Mota", "Gilberto Abramo", "Gustinho Ribeiro",
+      "Hugo Motta", "Jadyel Alencar", "Jeferson Rodrigues", "Jorge Braz", "Jorge Goetten", "Julio Cesar Ribeiro",
+      "Lafayette de Andrada", "Luciano Vieira", "Luís Carlos Gomes", "Marcelo Crivella", "Marcos Pereira",
+      "Márcio Marinho", "Maria Rosas", "Messias Donato", "Murilo Galdino", "Ossessio Silva", "Ricardo Ayres",
+      "Roberto Duarte", "Rogéria Santos", "Ronaldo Nogueira", "Samuel Viana", "Silas Câmara", "Vinicius Carvalho",
+      "Wilson Santiago"
+    ],
+    "PP": [
+      "Adriano do Baldy", "Afonso Hamm", "Aguinaldo Ribeiro", "AJ Albuquerque", "Allan Garcês", "Amanda Gentil",
+      "Ana Paula Leão", "André Abdon", "Arthur Lira", "Bebeto", "Clarissa Tércio", "Claudio Cajado", "Covatti Filho",
+      "Da Vitoria", "Delegado da Cunha", "Delegado Fabio Costa", "Dilceu Sperafico", "Dimas Fabiano", "Doutor Luizinho",
+      "Dr. Luiz Ovando", "Eduardo da Fonte", "Evair de Melo", "Fausto Pinato", "Júlio Arcoverde", "Julio Lopes",
+      "Luís Antônio Corrêa", "Lula da Fonte", "Mário Negromonte Jr", "Marx Beltrão", "Mauricio Neves", "Pedro Lupion",
+      "Pedro Westphalen", "Pinheirinho", "Ricardo Barros", "Robinson Faria", "Silvia Cristina", "Tiago de Joaldo",
+      "Tião Medeiros", "Tito Medeiros", "Toninho Wandscheer", "Vermelho", "Vicentinho Júnior", "Zé Adriano",
+      "Zezinho Barbary", "Átila Lira"
+    ],
+    "MDB": [
+      "Acácio Favacho", "Alceu Moreira", "Alexandre Guimarães", "Andreia Siqueira", "Antônio Doido", "Célio Silveira",
+      "Cleber Verde", "Cobalchini", "Dra. Alessandra Haber", "Duda Ramos", "Fábio Teruel", "Gutemberg Reis",
+      "Helena Lima", "Henderson Pinto", "Hercílio Coelho Diniz", "Hildo Rocha", "Inaldo Bulhões Jr.", "João Curí",
+      "José Priante", "Junior Lourenço", "Luiz Fernando Vampiro", "Márcio Biolchi", "Marussa Boldrin", "Nelinho Freitas",
+      "Newton Cardoso Jr", "Olivar Marques", "Pezenti", "Rafael Prudente", "Renilce Nicodemos", "Ricardo Maia",
+      "Sergio Souza", "Simone Marquetto", "Yury do Paredão"
+    ],
+    "PSD": [
+      "Castro Neto", "Cezinha de Madureira", "Danrlei de Deus Hinterholz", "Diego Andrade", "Diego Coronel",
+      "Dr. Ismael Alexandrino", "Gabriel Nunes", "Gilberto Nascimento", "Hugo Leal", "Igor Timo", "Ismael", "Josivaldo JP",
+      "Júlio César", "Luciano Amaral", "Luísa Canziani", "Luiz Fernando Faria", "Marcos Aurélio Sampaio", "Paulo Litro",
+      "Paulo Magalhães", "Pedro Paulo", "Raimundo Santos", "Reinhold Stephanes", "Rodrigo Estacho", "Sargento Fahur"
+    ],
+    "Podemos": [
+      "Bruno Ganem", "Dr. Victor Linhalis", "Enfermeira Ana Paula", "Fábio Macedo", "Maurício Marcon", "Nely Aquino",
+      "Rafael Fera", "Raimundo Costa", "Renata Abreu", "Rodrigo Gambale", "Romero Rodrigues", "Samuel Santos",
+      "Sargento Portugal", "Thiago Dimas"
+    ],
+    "PSB": [
+      "Eriberto Medeiros", "Felipe Carreras", "Gervásio Maia", "Guilherme Uchoa", "Jonas Donizette", "Lucas Ramos",
+      "Paulo Folletto", "Pedro Campos", "Júnior Mano"
+    ],
+    "PT": [
+      "Alfredinho", "Dilvanda Faro", "Dr. Francisco", "Florentino Neto", "Flávio Nogueira", "Jilmar Tatto",
+      "Kiko Celeguim", "Merlong Solano", "Odair Cunha", "Rubens Otoni"
+    ],
+    "PDT": [
+      "André Figueiredo", "Félix Mendonça Júnior", "Leo Prates", "Marcos Tavares", "Márcio Honaiser", "Mário Heringer",
+      "Mauro Benevides Filho", "Max Lemos", "Robério Monteiro"
+    ],
+    "PSDB": [
+      "Adolfo Viana", "Beto Pereira", "Beto Richa", "Geovania de Sá", "Leda Borges", "Paulo Abi-Ackel"
+    ],
+    "Avante": [
+      "Bruno Farias", "Delegada Ione", "Greyce Elias", "Luís Tibé", "Neto Carletto", "Waldemar Oliveira"
+    ],
+    "PRD": [
+      "Dr. Frederico", "Fred Costa", "Magda Moffatto", "Marreca Filho", "Pedro Aihara"
+    ],
+    "Cidadania": [
+      "Alex Manente", "Any Ortiz", "Arnaldo Jardim"
+    ],
+    "Solidariedade": [
+      "Aureo Ribeiro", "Paulinho da Força"
+    ],
+    "PV": [
+      "Aliel Machado", "Bacelar"
+    ]
+  };
+
+    const container = document.getElementById("deputadosContainer");
+    const searchInput = document.getElementById("searchInput");
+
+    function mostrarDeputados(filtro = "") {
+      container.innerHTML = "";
+      Object.keys(deputadosPorPartido).forEach(partido => {
+        const deputadosFiltrados = deputadosPorPartido[partido].filter(dep =>
+          dep.toLowerCase().includes(filtro.toLowerCase())
+        );
+        if (deputadosFiltrados.length > 0) {
+          const section = document.createElement("div");
+          section.classList.add("party");
+          section.innerHTML = `<h3>${partido}</h3><ul>${deputadosFiltrados.map(d => `<li>${d}</li>`).join("")}</ul>`;
+          container.appendChild(section);
+        }
+      });
+    }
+
+    searchInput.addEventListener("input", e => mostrarDeputados(e.target.value));
+    mostrarDeputados();
+  </script>
+
+</body>
+</html>

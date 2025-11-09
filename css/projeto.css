@@ -1,41 +1,75 @@
-/* css/projeto.css */
+body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
 
-header {
-  text-align: center;
-  padding: 30px 10px;
-}
+    header {
+      text-align: center;
+      padding: 30px 10px;
+    }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
+    header h1 {
+      font-size: 24px;
+      color: #1a73e8;
+    }
 
-.description {
-  background: #f8f9fa;
-  padding: 15px;
-  border-radius: 8px;
-  line-height: 1.6;
-  margin-bottom: 30px;
-}
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
-.search-box {
-  text-align: center;
-  margin-bottom: 30px;
-}
+    .description {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      line-height: 1.6;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
 
-.search-box input {
-  width: 80%;
-  max-width: 500px;
-  padding: 12px 20px;
-  border-radius: 24px;
-  border: 1px solid #ddd;
-  font-size: 16px;
-}
+    .search-box {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-.back-btn {
-  display: inline-block;
-  margin-bottom: 20px;
-  color: #1a73e8;
-  font-weight: bold;
-}
+    .search-box input {
+      width: 80%;
+      max-width: 500px;
+      padding: 12px 20px;
+      border-radius: 24px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .party {
+      margin-bottom: 25px;
+    }
+
+    .party h3 {
+      color: #1a73e8;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 6px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: #1a73e8;
+      font-weight: bold;
+    }

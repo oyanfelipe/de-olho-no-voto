@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PL 2.159/2021 — De Olho no Voto</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/projeto.css">
+  
+</head>
+<body>
+
+  <header>
+    <h1>PL 2.159/2021 — Entenda o projeto</h1>
+  </header>
+
+  <div class="container">
+
+    <a href="../index.html" class="back-btn">← Voltar à página inicial</a>
+
+    <div class="description">
+  <p>O <strong>PL 2.159/2021</strong> é um projeto de lei que propõe mudanças no marco do licenciamento ambiental no Brasil. Ele altera as regras para a concessão de licenças que autorizam atividades e empreendimentos com potencial impacto ambiental.</p>
+
+  <p>A proposta introduz novas modalidades de licenciamento, como a <strong>Licença Ambiental Especial (LAE)</strong>, que simplifica o processo para determinados empreendimentos classificados como estratégicos. Também amplia as possibilidades de <strong>autolicenciamento</strong>, permitindo que o próprio empreendedor declare o cumprimento dos requisitos legais em alguns casos, sem necessidade de avaliação prévia completa pelos órgãos ambientais.</p>
+
+  <p>Outro ponto importante do texto é a <strong>delegação de competências</strong> para estados e municípios, que passariam a definir quando o licenciamento federal é exigido, reduzindo a atuação de órgãos como o IBAMA em certas situações.</p>
+
+  <p>De acordo com especialistas em direito ambiental e transparência, essas mudanças podem <strong>enfraquecer os mecanismos de controle e fiscalização</strong>, especialmente em áreas sensíveis como terras indígenas, quilombolas e unidades de conservação. Já os defensores do projeto afirmam que ele busca <strong>agilizar processos</strong> e reduzir burocracias para incentivar o desenvolvimento econômico.</p>
+
+  <p>O projeto foi aprovado na Câmara dos Deputados em <strong>17 de julho de 2025</strong>, com <strong>267 votos favoráveis</strong> e <strong>116 contrários</strong>. Após a aprovação, o texto seguiu para análise e sanção presidencial, com possibilidade de vetos a trechos específicos.</p>
+
+  <p>Mesmo após vetos, parlamentares apresentaram novas emendas e projetos com conteúdo semelhante, o que mantém o debate ativo sobre o equilíbrio entre <strong>desenvolvimento econômico e proteção ambiental</strong>.</p>
+
+  <p>A votação do PL 2.159/2021 reforça a importância do acompanhamento das decisões do Congresso Nacional e da participação da sociedade na discussão de leis que impactam o meio ambiente e os direitos coletivos.</p>
+
+  <h4>Fontes e referências:</h4>
+  <ul class="sources">
+    <li><a href="https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2263901" target="_blank">Câmara dos Deputados — Tramitação do PL 2.159/2021</a></li>
+    <li><a href="https://www.senado.leg.br/" target="_blank">Senado Federal — Relatórios e pareceres sobre o projeto</a></li>
+    <li><a href="https://noticias.uol.com.br/meio-ambiente/ultimas-noticias/2025/07/17/pl-da-devastacao-e-aprovado-na-camara.htm" target="_blank">UOL Notícias — Cobertura da votação</a></li>
+    <li><a href="https://www.socioambiental.org/" target="_blank">Instituto Socioambiental — Análises e impactos do projeto</a></li>
+  </ul>
+</div>
+
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Pesquise o nome de um deputado...">
+    </div>
+
+    <div id="deputadosContainer"></div>
+  </div>
+
+  <script>
+    const deputadosPorPartido = {
+      "PP": [
+        "AJ Albuquerque",
+        "Adriano do Baldy",
+        "Afonso Hamm",
+        "Allan Garcês",
+        "Amanda Gentil",
+        "Ana Paula Leão",
+        "Bebeto"
+      ],
+      "MDB": [
+        "Acácio Favacho",
+        "Alceu Moreira",
+        "Alexandre Guimarãe",
+        "Andreia Siqueira",
+        "Antônio Doido",
+        "Augusto Puppio",
+        "Célio Silveira"
+      ],
+      "Republicanos": [
+        "Adail Filho",
+        "Aluisio Mendes",
+        "Amaro Neto",
+        "Antônia Lúcia",
+        "Antonio Andrade",
+        "Augusto Coutinho",
+        "Celso Russomanno"
+      ],
+      "PL": [
+        "Adilson Barroso",
+        "Alberto Fraga",
+        "Altineu Côrtes",
+        "André Ferreira",
+        "Antonio Carlos R.",
+        "Bia Kicis",
+        "Bibo Nunes",
+        "Cap. Alberto Neto",
+        "Capitão Alden",
+        "Capitão Augusto",
+        "Carlos Jordy",
+        "Caroline de Toni",
+        "Cb Gilberto Silva",
+        "Cel. Chrisóstomo"
+      ],
+      "Novo": ["Adriana Ventura"],
+      "PDT": ["Afonso Motta"],
+      "União": [
+        "Arthur O. Maia",
+        "Benes Leocádio",
+        "Carla Dickson",
+        "Carlos Gaguim"
+      ],
+      "PSD": [
+        "Átila Lins",
+        "Caio Vianna",
+        "Carlos Sampaio"
+      ],
+      "PSDB": ["Beto Pereira", "Beto Richa"],
+      "Avante": ["Bruno Farias"],
+      "Cidadania": ["Any Ortiz", "Arnaldo Jardim"],
+      "PT": ["Arlindo Chinaglia"]
+    };
+
+    const container = document.getElementById("deputadosContainer");
+    const searchInput = document.getElementById("searchInput");
+
+    function mostrarDeputados(filtro = "") {
+      container.innerHTML = "";
+      Object.keys(deputadosPorPartido).forEach(partido => {
+        const deputadosFiltrados = deputadosPorPartido[partido].filter(dep =>
+          dep.toLowerCase().includes(filtro.toLowerCase())
+        );
+        if (deputadosFiltrados.length > 0) {
+          const section = document.createElement("div");
+          section.classList.add("party");
+          section.innerHTML = `<h3>${partido}</h3><ul>${deputadosFiltrados.map(d => `<li>${d}</li>`).join("")}</ul>`;
+          container.appendChild(section);
+        }
+      });
+    }
+
+    searchInput.addEventListener("input", e => mostrarDeputados(e.target.value));
+    mostrarDeputados();
+  </script>
+
+</body>
+</html>

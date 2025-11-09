@@ -1,4 +1,4 @@
-// Função para buscar foto na API da Câmara (mesma que você já usa)
+// Função para buscar foto na API da Câmara
 async function buscarFotoDeputado(nome) {
   try {
     const resp = await fetch(`https://dadosabertos.camara.leg.br/api/v2/deputados?nome=${encodeURIComponent(nome)}`);
@@ -23,20 +23,33 @@ async function carregarDeputados() {
     if (!resposta.ok) throw new Error('Erro ao carregar dados.');
     const dados = await resposta.json();
 
-    const projeto = dados.projetos[0]; // aqui pegamos o PL 1904/2024
     const todosDeputados = [];
 
-    for (const partido in projeto.votos) {
-      projeto.votos[partido].forEach(nome => {
-        todosDeputados.push({
-          nome,
-          partido,
-          estado: "",
-          votou_a_favor: [projeto.titulo],
-          votou_contra: []
+    // percorre todos os projetos do JSON
+    dados.projetos.forEach(projeto => {
+      for (const partido in projeto.votos) {
+        projeto.votos[partido].forEach(nome => {
+          let dep = todosDeputados.find(d => d.nome === nome);
+
+          if (!dep) {
+            dep = {
+              nome,
+              partido,
+              estado: "",
+              votou_a_favor: [],
+              votou_contra: []
+            };
+            todosDeputados.push(dep);
+          }
+
+          dep.votou_a_favor.push({
+            titulo: projeto.titulo,
+            descricao: projeto.descricao,
+            link: projeto.link
+          });
         });
-      });
-    }
+      }
+    });
 
     return todosDeputados;
   } catch (erro) {
@@ -54,8 +67,20 @@ function carregarProjetos() {
     {
       numero: "PL 1904/2024",
       titulo: "Criminalização do aborto após 22 semanas de gestação",
-      resumo: "Propõe equiparar o aborto após 22 semanas ao crime de homicídio, exceto em casos previstos em lei.",
-      link: "projetos/pl1904.html"
+      resumo: "Propõe alterar o Código Penal para punir com prisão o aborto realizado após 22 semanas de gestação, inclusive em casos de estupro. O projeto também impede campanhas públicas sobre educação sexual e prevenção do casamento infantil.",
+      link: "projetos/pl19042024.html"
+    },
+    {
+      numero: "PEC 3/2021",
+      titulo: "Alterações nas regras de investigação e prisão de parlamentares",
+      resumo: "Propõe que prisões, investigações e processos contra deputados e senadores só pudessem ocorrer com autorização prévia da Casa Legislativa, além de ampliar o foro privilegiado a líderes partidários.",
+      link: "projetos/pec32021.html"
+    },
+    {
+      numero: "PL 2.159/2021",
+      titulo: "Alterações nas Regras de Licenciamento Ambiental",
+      resumo: "Propõe alterar as regras do licenciamento ambiental no Brasil, criando modalidades simplificadas de autorização e ampliando o autolicenciamento para determinados empreendimentos. Especialistas alertam que a proposta pode reduzir a fiscalização e aumentar riscos a biomas e comunidades tradicionais. Ficou conhecida como “PL da Devastação”.",
+      link: "projetos/pl21592021.html"
     }
   ];
 
@@ -85,58 +110,53 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  // contador para evitar race conditions: incrementa a cada input
   let searchCounter = 0;
-  // debounce timer
   let debounceTimer = null;
 
   buscaInput.addEventListener('input', () => {
-    // debounce curto para reduzir chamadas enquanto o usuário digita rápido
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => handleSearch(), 120);
   });
 
   async function handleSearch() {
     const termo = buscaInput.value.trim().toLowerCase();
-    // marcar nova busca
     searchCounter++;
     const localSearchId = searchCounter;
 
-    // quando campo vazio: mostra projetos e limpa resultados imediatos
     if (termo.length === 0) {
       projetosSection.style.display = 'block';
       resultadosDiv.innerHTML = '<p>Comece digitando um nome acima para ver como o deputado votou.</p>';
       return;
     }
 
-    // esconder projetos (como hoje)
     projetosSection.style.display = 'none';
-    resultadosDiv.innerHTML = ''; // limpa resultados antigos
+    resultadosDiv.innerHTML = '';
 
-    // filtra localmente (igual sua lógica)
     const encontrados = deputados.filter(dep => dep.nome.toLowerCase().includes(termo));
 
     if (encontrados.length === 0) {
-      // antes de escrever, checa se a busca ainda é a última
       if (localSearchId !== searchCounter) return;
       resultadosDiv.innerHTML = '<p>Nenhum deputado encontrado.</p>';
       return;
     }
 
-    // percorre encontrados; usamos for..of pra poder await a foto
     for (const dep of encontrados) {
-      // se durante o processamento o usuário digitou outra coisa, interrompe
       if (localSearchId !== searchCounter) return;
 
-      // busca a foto (pode demorar)
       const fotoUrl = await buscarFotoDeputado(dep.nome);
-
-      // checa de novo depois do await — se não for a busca atual, aborta
       if (localSearchId !== searchCounter) return;
+
+      const projetosHTML = dep.votou_a_favor.map(pl => `
+        <li class="projeto-item">
+        <p class="projeto-titulo">✅ <strong>${pl.titulo}</strong></p>
+        <p class="projeto-descricao">${pl.descricao}</p>
+        <a href="${pl.link}">Ver detalhes</a>
+        </li>
+        `).join('');
+
 
       const bloco = document.createElement('div');
       bloco.classList.add('deputado');
-
       bloco.innerHTML = `
         <div class="deputado-card">
           <img src="${fotoUrl}" alt="Foto de ${dep.nome}" onerror="this.src='imagens/default.jpg'">
@@ -145,13 +165,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             <p><strong>Partido:</strong> ${dep.partido}</p>
             <h3>Votou a favor de:</h3>
             <ul class="lista-votos">
-              ${dep.votou_a_favor.map(pl => `<li>✅ ${pl}</li>`).join('')}
+              ${projetosHTML}
             </ul>
           </div>
         </div>
       `;
 
-      // antes de inserir, cheque novamente para evitar race
       if (localSearchId !== searchCounter) return;
       resultadosDiv.appendChild(bloco);
     }

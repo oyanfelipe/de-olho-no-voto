@@ -1,3 +1,4 @@
+/*
 
 encontrados.forEach(async dep => {
   const bloco = document.createElement('div');
@@ -22,3 +23,5 @@ encontrados.forEach(async dep => {
 
   resultadosDiv.appendChild(bloco);
 });
+
+*/
