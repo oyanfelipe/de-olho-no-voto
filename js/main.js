@@ -35,7 +35,7 @@ encontrados.forEach(async dep => {
     });
   });
 
-  const menu = document.getElementById('menu');
+  const menu = document.getElementById('menuFlutuante');
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 120) {
