@@ -35,12 +35,11 @@ encontrados.forEach(async dep => {
     });
   });
   
-  const header = document.querySelector('.floating-header');
+  const header = document.querySelectorAll('.pill-link');
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      header.classList.add('fixed');
-    } else {
-      header.classList.remove('fixed');
-    }
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
   });
