@@ -25,3 +25,22 @@ encontrados.forEach(async dep => {
 });
 
 */
+
+  const links = document.querySelectorAll('.pill-link');
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+  
+  const header = document.querySelector('.floating-header');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      header.classList.add('fixed');
+    } else {
+      header.classList.remove('fixed');
+    }
+  });
