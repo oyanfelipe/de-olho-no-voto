@@ -34,39 +34,47 @@ input#busca {
   outline: none;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-/* MENU */
-.nav-menu {
+/* CONTAINER DO HEADER */
+.pill-header {
   display: flex;
-  gap: 18px;
-  list-style: none;
-  background: rgba(255, 255, 0.85);
-  padding: 8px 18px;
-  border-radius: 30px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  justify-content: center;
+  padding-top: 20px;
 }
 
-.nav-menu li a {
+/* NAV CAPSULA */
+.pill-nav {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* LINKS */
+.pill-nav a {
   text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 999px;
   font-size: 14px;
   font-weight: 500;
   color: #555;
-  padding: 6px 14px;
-  border-radius: 20px;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
-/*Hover*/
-.nav-menu li a:hover {
-  background-color: #eaeaea;
-  color: #000;
+/* HOVER */
+.pill-nav a:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
-/* Item ativo (Home) */
-.nav-menu li a.active {
-  background-color: #ffffff;
-  color: #000;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08)
+/* ITEM ATIVO */
+.pill-nav a.active {
+  background: #b8c4ec; /* azul lilás da referência */
+  color: #1e2a5a;
 }
+
 
 /* --- Projetos --- */
 #projetos {
