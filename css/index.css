@@ -34,58 +34,39 @@ input#busca {
   outline: none;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-/* MENU FIXO */
-.menu-fixo {
-  position: relative; /* MUITO IMPORTANTE */
-  display: flex;
-  justify-content: center;
-  margin-bottom: 24px;
+.menu {
+  display: inline-flex;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   transition: all 0.3s ease;
 }
 
-.menu-fixo.fixo {
-  position: fixed;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-
-  background: rgba(255, 255, 255, 0.95);
-  padding: 8px 16px;
-  border-radius: 999px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-}
-
-
-
-/* PILLS */
-.nav-menu {
-  display: flex;
-  gap: 6px;
-  padding: 6px;
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(12px);
-  border-radius: 999px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-}
-
+/* LINKS */
 .pill-link {
-  padding: 10px 18px;
-  border-radius: 999px;
-  color: #fff;
   text-decoration: none;
-  font-size: 14px;
-  transition: all 0.25s ease;
-}
-
-.pill-link:hover {
-  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 999px;
+  color: #004aad;
+  font-weight: 500;
 }
 
 .pill-link.active {
-  background: #ffffff;
-  color: #1e40af;
-  font-weight: 600;
+  background: #004aad;
+  color: white;
+}
+
+/* 🔥 ESTADO FLUTUANTE */
+.menu.floating {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
 
 

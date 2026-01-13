@@ -35,12 +35,12 @@ encontrados.forEach(async dep => {
     });
   });
 
-  const menu = document.getElementById('menu');
+  const menu = document.getElementById('menuFlutuante');
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      menu.classList.add('fixo');
+    if (window.scrollY > 120) {
+      menu.classList.add('floating');
     } else {
-      menu.classList.remove('fixo');
+      menu.classList.remove('floating');
     }
   });
