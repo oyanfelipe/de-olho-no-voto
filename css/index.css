@@ -34,45 +34,48 @@ input#busca {
   outline: none;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-/* CONTAINER DO HEADER */
-.pill-header {
+/* HEADER FLUTUANTE */
+.floating-header {
+  position: absolute;
+  top: 24px;
+  width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 20px;
+  z-index: 999;
 }
 
-/* NAV CAPSULA */
-.pill-nav {
+/* CÁPSULA */
+.pill-menu {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  padding: 6px;
   display: flex;
   gap: 6px;
-  padding: 6px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 /* LINKS */
-.pill-nav a {
-  text-decoration: none;
-  padding: 8px 18px;
+.pill-link {
+  position: relative;
+  padding: 8px 22px;
   border-radius: 999px;
+  text-decoration: none;
   font-size: 14px;
   font-weight: 500;
   color: #555;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
+  z-index: 1;
 }
 
 /* HOVER */
-.pill-nav a:hover {
-  background: rgba(0, 0, 0, 0.05);
+.pill-link:hover {
+  color: #004aad;
 }
 
-/* ITEM ATIVO */
-.pill-nav a.active {
-  background: #b8c4ec; /* azul lilás da referência */
-  color: #1e2a5a;
+/* ATIVO */
+.pill-link.active {
+  background: #cfd8f3;
+  color: #004aad;
 }
 
 
