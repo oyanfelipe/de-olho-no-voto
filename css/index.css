@@ -34,6 +34,39 @@ input#busca {
   outline: none;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+/* MENU */
+.nav-menu {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  background: rgba(255, 255, 0.85);
+  padding: 8px 18px;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+/*Hover*/
+.nav-menu li a:hover {
+  background-color: #eaeaea;
+  color: #000;
+}
+
+/* Item ativo (Home) */
+.nav-menu li a.active {
+  background-color: #ffffff;
+  color: #000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08)
+}
 
 /* --- Projetos --- */
 #projetos {
