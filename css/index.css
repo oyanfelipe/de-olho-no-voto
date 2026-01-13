@@ -34,22 +34,24 @@ input#busca {
   outline: none;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+/* MENU FIXO */
 .menu-fixo {
-  position: sticky;
-  top: 15px;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
 }
 
+/* PILLS */
 .nav-menu {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   padding: 6px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(12px);
   border-radius: 999px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 .pill-link {
@@ -58,7 +60,7 @@ input#busca {
   color: #fff;
   text-decoration: none;
   font-size: 14px;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .pill-link:hover {
