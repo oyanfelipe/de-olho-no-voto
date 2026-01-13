@@ -38,7 +38,7 @@ encontrados.forEach(async dep => {
   const menu = document.getElementById('menu');
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 100) {
       menu.classList.add('fixo');
     } else {
       menu.classList.remove('fixo');
