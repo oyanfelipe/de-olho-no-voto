@@ -34,3 +34,13 @@ encontrados.forEach(async dep => {
       link.classList.add('active');
     });
   });
+
+  const menu = document.getElementById('menu');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      menu.classList.add('fixo');
+    } else {
+      menu.classList.remove('fixo');
+    }
+  });

@@ -36,12 +36,20 @@ input#busca {
 }
 /* MENU FIXO */
 .menu-fixo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+.menu-fixo.fixo {
   position: fixed;
   top: 16px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
 }
+
 
 /* PILLS */
 .nav-menu {
@@ -72,6 +80,7 @@ input#busca {
   color: #1e40af;
   font-weight: 600;
 }
+
 
 
 
