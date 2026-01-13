@@ -34,12 +34,3 @@ encontrados.forEach(async dep => {
       link.classList.add('active');
     });
   });
-  
-  const header = document.querySelectorAll('.pill-link');
-
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      links.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-    });
-  });
