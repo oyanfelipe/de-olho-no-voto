@@ -66,9 +66,11 @@ body {
 /* =========================
    MENU FLUTUANTE
 ========================= */
-
+#scroll-trigger {
+  height: 1px;
+}
 #menu.floating {
-   position: fixed;
+  position: fixed;
   top: 16px;
   left: 50%;
 
