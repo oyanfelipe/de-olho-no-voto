@@ -15,33 +15,28 @@ body {
    MENU NORMAL (TOPO)
 ========================= */
 
-#menu {
-  width: 100%;
+#menu-topo {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+
   display: flex;
-  justify-content: center;
-  gap: 16px;
-  padding: 16px;
+  gap: 12px;
+
   background: transparent;
+  padding: 0;
 
-  /* IMPORTANTE */
-  position: relative;
-  z-index: 10;
-
-  transition: all 0.3s ease;
-}
-
-/* LINKS EM FORMATO DE PÍLULA */
-.pill {
-  text-decoration: none;
-  padding: 10px 18px;
+  box-shadow: none;
   border-radius: 999px;
-  background: #ffffff;
-  color: #004aad;
-  font-weight: 500;
-  font-size: 0.9rem;
 
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: all 0.25s ease;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    padding 0.3s ease;
+  
+  z-index: 10;
 }
 
 .pill:hover {
