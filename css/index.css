@@ -14,7 +14,7 @@ body {
   text-align: center;
 }
 
-#menu {
+#menu.floating {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -51,7 +51,7 @@ body {
 }
 
 /* 🔥 ESTADO FLUTUANTE */
-#menu.floating {
+#menu {
   position: fixed;
   top: 16px;
   left: 50%;
