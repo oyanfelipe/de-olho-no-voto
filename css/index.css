@@ -1,55 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Unito Sans", Arial, sans-serif;
   background-color: #f6f9fc;
+  color: #222;
+
   margin: 0;
   padding: 0;
   text-align: center;
-  color: #222;
 }
 
-header {
-  background-color: #004aad;
-  color: white;
-  padding: 40px 20px;
-}
-
-h1 {
-  margin: 0;
-  font-size: 2em;
-}
-
-.subtitulo {
-  margin: 10px 0 20px;
-  font-size: 1em;
-}
-
-input#busca {
-  width: 80%;
-  max-width: 500px;
-  padding: 12px;
-  border-radius: 30px;
-  border: none;
-  font-size: 1em;
-  text-align: center;
-  outline: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
 #menu {
+  width: 100%;
   display: flex;
-  gap: 12px;
   justify-content: center;
-  margin: 20px auto;
+  gap: 16px;
+  padding: 16px;
+  background: transparent;
+  
+  /* IMPORTANTE */
   position: relative;
+  z-index: 10;
+
   transition: all 0.3s ease;
 }
 
-/* LINKS */
+/* LINKS EM FORMATO DE PILULA */
 .pill {
   text-decoration: none;
-  padding: 6px 14px;
+  padding: 10px 18px;
   border-radius: 999px;
+  background: #ffffff;
   color: #004aad;
   font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.pill:hover {
+  background: #004aad;
+  color: white;
 }
 
 .pill.active {
@@ -63,13 +56,48 @@ input#busca {
   top: 16px;
   left: 50%;
   transform: translate(-50%);
-  z-index: 1000;
+
   background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-  padding: 10px 14px;
+  padding: 12px 20px;
   border-radius: 999px;
+
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  backdrop-filter: blur(8px);
+
+  z-index: 1000;
 }
 
+/* --- HEADER --- */
+header {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+header h1 {
+  font-size: 2.4rem;
+  color: #004aad;
+  max-width: 12px;
+}
+
+.subtitulo {
+  font-size: 1.05rem;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+header input {
+  width: 100%;
+  max-width: 420px;
+  padding: 14px 18px;
+  font-size: 1rem;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+header input:focus {
+  border-color: #004aad;
+}
 
 
 /* --- Projetos --- */

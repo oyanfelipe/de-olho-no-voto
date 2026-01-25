@@ -25,14 +25,18 @@ encontrados.forEach(async dep => {
 });
 
 */
+document.addEventListener('DOMContentLoaded', () => {
+  const menu = document.getElementById('menu');
 
-const menu = document.getElementById('menu');
-const header = document.querySelector('header');
+  if (!menu) return;
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > header.offsetHeight) {
-    menu.classList.add('floating');
-  } else {
-    menu.classList.remove('floating');
-  }
+  const pontoDeAtivacao = menu.offsetTop;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 120) {
+      menu.classList.add('floating');
+    } else {
+      menu.classList.remove('floating');
+    }
+  });
 });
