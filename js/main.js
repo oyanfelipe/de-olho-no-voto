@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const menu = document.getElementById('menu');
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 5) {
+    if (window.scrollY > 0) {
       menu.classList.add('floating');
     } else {
       menu.classList.remove('floating');
