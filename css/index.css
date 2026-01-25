@@ -39,9 +39,17 @@ body {
   z-index: 10;
 }
 
+.pill {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: #004aad;
+  transition: background 0.2s ease;
+}
+
 .pill:hover {
-  background: #004aad;
-  color: white;
+  background: rgba(0,74,173,0.1);
 }
 
 .pill.active {
@@ -68,16 +76,6 @@ body {
 
   z-index: 1000;
 }
-.pill:hover.floating {
-  background: #004aad;
-  color: white;
-}
-
-.pill.active.floating {
-  background: #004aad;
-  color: white;
-}
-
 
 /* =========================
    HEADER
