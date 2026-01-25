@@ -15,7 +15,7 @@ body {
    MENU NORMAL (TOPO)
 ========================= */
 
-#menu {
+#menu.floating {
   position: absolute;
   top: 20px;
   left: 50%;
@@ -53,7 +53,7 @@ body {
    MENU FLUTUANTE
 ========================= */
 
-#menu.floating {
+#menu {
    position: fixed;
   top: 16px;
   left: 50%;
