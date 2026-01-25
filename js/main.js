@@ -26,21 +26,15 @@ encontrados.forEach(async dep => {
 
 */
 
-  const links = document.querySelectorAll('.pill-link');
+const menu = document.getElementById('menu');
+const header = document.getElementById('topo');
 
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      links.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-    });
-  });
+window.addEventListener('scroll', () => {
+  const headerBottom = header.getBoundingClientRect().bottom;
 
-  const menu = document.getElementById('menuFlutuante');
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 120) {
-      menu.classList.add('floating');
-    } else {
-      menu.classList.remove('floating');
-    }
-  });
+  if (headerBottom <= 0) {
+    menu.classList.add('floating');
+  } else {
+    menu.classList.remove('floating');
+  }
+});
