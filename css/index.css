@@ -19,13 +19,13 @@ body {
   top: 0;
   z-index: 1000;
 
+  display: flex;
+  justify-content: center;
+
   transition: 
-  transform 0.35s ease,
+  transform 0.35s cubic-bezier(.4, 0, .2, 1),
   box-shadow 0.35s ease,
   background 0.35s ease;
-
-  transform: translateY(0);
-  box-shadow: none;
 }
 
   
