@@ -15,7 +15,7 @@ body {
    MENU NORMAL (TOPO)
 ========================= */
 
-#menu {
+#menu.floating {
   position: absolute;
   top: 20px;
   left: 50%;
@@ -69,7 +69,7 @@ body {
 #scroll-trigger {
   height: 1px;
 }
-#menu.floating {
+#menu {
   position: fixed;
   top: 16px;
   left: 50%;
