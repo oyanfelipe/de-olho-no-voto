@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const pontoDeAtivacao = menu.offsetTop;
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 120) {
+    if (window.scrollY > 0) {
       menu.classList.add('floating');
     } else {
       menu.classList.remove('floating');
