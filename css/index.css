@@ -1,104 +1,93 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* RESET BÁSICO */
 body {
-  font-family: "Unito Sans", Arial, sans-serif;
-  background-color: #f6f9fc;
-  color: #222;
-
   margin: 0;
-  padding: 0;
-  text-align: center;
+  font-family: Arial, sans-serif;
 }
 
-#menu {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+/* =======================
+   MENU – ESTADO NORMAL
+   ======================= */
+
+#menu-topo {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
 
   display: flex;
-  justify-content: center;
+  gap: 12px;
 
-  transition: 
-  transform 0.35s cubic-bezier(.4, 0, .2, 1),
-  box-shadow 0.35s ease,
-  background 0.35s ease;
-}
+  background: transparent;
+  padding: 0;
 
-  
-
-/* LINKS EM FORMATO DE PILULA */
-.pill {
-  text-decoration: none;
-  padding: 10px 18px;
+  box-shadow: none;
   border-radius: 999px;
-  background: #ffffff;
-  color: #004aad;
-  font-weight: 500;
-  font-size: 0.9rem;
+
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    padding 0.3s ease;
+  
+  z-index: 10;
 }
 
-.pill:hover {
-  background: #004aad;
-  color: white;
-}
+/* =======================
+   MENU – FLUTUANTE
+   ======================= */
 
-.pill.active {
-  background: #004aad;
-  color: white;
-}
-
-/* 🔥 ESTADO FLUTUANTE */
-#menu.floating {
+#menu-topo.floating {
   position: fixed;
   top: 16px;
   left: 50%;
-  transform: translateY(12px) scale(0.98);
 
-  background: rgba(255, 255, 255, 0.95);
-  padding: 12px 20px;
+  transform: translateX(-50%) translateY(8px);
+
+  background: white;
+  padding: 10px 18px;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
   border-radius: 999px;
 
-  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-  backdrop-filter: blur(8px);
-
-  z-index: 1000; 
+  z-index: 1000;
 }
 
-/* --- HEADER --- */
-header {
-  text-align: center;
-  padding: 80px 20px 40px;
-}
+/* =======================
+   LINKS
+   ======================= */
 
-header h1 {
-  font-size: 2.4rem;
+.pill-link {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+
   color: #004aad;
-  max-width: 12px;
+  transition: background 0.2s ease;
+}
+
+.pill-link:hover {
+  background: rgba(0,74,173,0.1);
+}
+
+.pill-link.active {
+  background: #004aad;
+  color: white;
+}
+
+/* =======================
+   HEADER (NORMAL)
+   ======================= */
+
+header {
+  padding: 120px 20px 60px;
+  text-align: center;
 }
 
 .subtitulo {
-  font-size: 1.05rem;
   color: #555;
-  margin-bottom: 24px;
 }
 
-header input {
-  width: 100%;
-  max-width: 420px;
-  padding: 14px 18px;
-  font-size: 1rem;
-  border-radius: 30px;
-  border: 1px solid #ccc;
-  outline: none;
-}
-
-header input:focus {
-  border-color: #004aad;
-}
 
 
 /* --- Projetos --- */
