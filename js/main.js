@@ -28,12 +28,20 @@ encontrados.forEach(async dep => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const menu = document.getElementById('menu');
+  const trigger = document.getElementById('scroll-trigger');
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 0) {
-      menu.classList.add('.floating');
-    } else {
-      menu.classList.remove('.floating');
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry.isIntersecting) {
+        menu.classList.add('floating');
+      } else {
+        menu.classList.remove('floating');
+      }
+    },
+    {
+      threshold: 0
     }
-  });
+  );
+
+  observer.observe(trigger);
 });
