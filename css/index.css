@@ -34,11 +34,12 @@ input#busca {
   outline: none;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-.menu {
+#menu {
   display: flex;
   gap: 12px;
   justify-content: center;
-  margin-bottom: 20px;
+  margin: 20px auto;
+  position: relative;
   transition: all 0.3s ease;
 }
 
@@ -57,11 +58,12 @@ input#busca {
 }
 
 /* 🔥 ESTADO FLUTUANTE */
-.menu.floating {
+#menu.floating {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 999;
+  top: 16px;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 1000;
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 10px 30px rgba(0,0,0,0.25);
   padding: 10px 14px;
