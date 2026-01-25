@@ -25,14 +25,18 @@ encontrados.forEach(async dep => {
 });
 
 */
+console.log('JS carregou');
+
 document.addEventListener('DOMContentLoaded', () => {
   const menu = document.getElementById('menu');
+  console.log('menu:', menu);
 
   if (!menu) return;
 
   const pontoDeAtivacao = menu.offsetTop;
 
   window.addEventListener('scroll', () => {
+    console.log('scroll:', window.scrollY);
     if (window.scrollY > 0) {
       menu.classList.add('floating');
     } else {
