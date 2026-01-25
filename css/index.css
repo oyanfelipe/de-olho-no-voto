@@ -68,6 +68,16 @@ body {
 
   z-index: 1000;
 }
+.pill:hover.floating {
+  background: #004aad;
+  color: white;
+}
+
+.pill.active.floating {
+  background: #004aad;
+  color: white;
+}
+
 
 /* =========================
    HEADER
