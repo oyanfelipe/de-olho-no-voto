@@ -29,12 +29,8 @@ encontrados.forEach(async dep => {
 document.addEventListener('DOMContentLoaded', () => {
   const menu = document.getElementById('menu');
 
-  if (!menu) return;
-
-  const pontoDeAtivacao = menu.offsetTop;
-
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 0) {
+    if (window.scrollY > 5) {
       menu.classList.add('floating');
     } else {
       menu.classList.remove('floating');

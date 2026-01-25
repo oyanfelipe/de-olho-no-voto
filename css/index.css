@@ -39,6 +39,12 @@ body {
   z-index: 10;
 }
 
+/* LISTA DO MENU */
+.nav {
+  display: flex;
+  gap: 12px;
+}
+
 .pill {
   text-decoration: none;
   padding: 8px 16px;
