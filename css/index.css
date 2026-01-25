@@ -1,73 +1,52 @@
 /* RESET BÁSICO */
-body {
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-/* =======================
-   MENU – ESTADO NORMAL
-   ======================= */
-
-.menu {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%) translateY(0);
-
-  display: flex;
-  gap: 12px;
-
-  background: transparent;
   padding: 0;
+  box-sizing: border-box;
+}
 
-  box-shadow: none;
-  border-radius: 999px;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fa;
+  color: #222;
+}
 
-  transition:
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.3s ease,
-    box-shadow 0.3s ease,
-    padding 0.3s ease;
-  
+/* =========================
+   MENU NORMAL (TOPO)
+========================= */
+
+#menu-topo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+  background: transparent;
+
+  /* IMPORTANTE */
+  position: relative;
   z-index: 10;
+
+  transition: all 0.3s ease;
 }
 
-/* =======================
-   MENU – FLUTUANTE
-   ======================= */
-
-.menu.floating {
-  position: fixed;
-  top: 16px;
-  left: 50%;
-
-  transform: translateX(-50%) translateY(8px);
-
-  background: white;
-  padding: 10px 18px;
-
-  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-  border-radius: 999px;
-
-  z-index: 1000;
-}
-
-/* =======================
-   LINKS
-   ======================= */
-
+/* LINKS EM FORMATO DE PÍLULA */
 .pill-link {
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 10px 18px;
   border-radius: 999px;
+  background: #ffffff;
+  color: #004aad;
+  font-weight: 500;
   font-size: 0.9rem;
 
-  color: #004aad;
-  transition: background 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
 }
 
 .pill-link:hover {
-  background: rgba(0,74,173,0.1);
+  background: #004aad;
+  color: white;
 }
 
 .pill-link.active {
@@ -75,19 +54,78 @@ body {
   color: white;
 }
 
-/* =======================
-   HEADER (NORMAL)
-   ======================= */
+/* =========================
+   MENU FLUTUANTE
+========================= */
+
+#menu-topo.floating {
+  position: fixed;
+  top: 16px;              /* NÃO colado no topo */
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: rgba(255, 255, 255, 0.95);
+  padding: 12px 20px;
+  border-radius: 999px;
+
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  backdrop-filter: blur(8px);
+
+  z-index: 999;
+}
+
+/* =========================
+   HEADER
+========================= */
 
 header {
-  padding: 120px 20px 60px;
   text-align: center;
+  padding: 80px 20px 40px;
+}
+
+header h1 {
+  font-size: 2.4rem;
+  color: #004aad;
+  margin-bottom: 12px;
 }
 
 .subtitulo {
+  font-size: 1.05rem;
   color: #555;
+  margin-bottom: 24px;
 }
 
+header input {
+  width: 100%;
+  max-width: 420px;
+  padding: 14px 18px;
+  font-size: 1rem;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+header input:focus {
+  border-color: #004aad;
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+main {
+  padding: 40px 20px;
+}
+
+section {
+  max-width: 900px;
+  margin: 0 auto 80px;
+}
+
+section h2 {
+  margin-bottom: 12px;
+  color: #004aad;
+}
 
 
 /* --- Projetos --- */
