@@ -29,12 +29,12 @@ encontrados.forEach(async dep => {
 const menu = document.getElementById('menu');
 const header = document.getElementById('topo');
 
-window.addEventListener('scroll', () => {
-  const headerBottom = header.getBoundingClientRect().bottom;
+const headerHeight = header.offsetHeight;
 
-  if (headerBottom <= 0) {
+window.addEventListener('scroll', () => {
+  if (window.scrollY > headerHeight) {
     menu.classList.add('floating');
   } else {
     menu.classList.remove('floating');
-  }
+}
 });
