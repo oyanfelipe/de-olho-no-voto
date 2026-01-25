@@ -27,14 +27,12 @@ encontrados.forEach(async dep => {
 */
 
 const menu = document.getElementById('menu');
-const header = document.getElementById('topo');
-
-const headerHeight = header.offsetHeight;
+const header = document.querySelector('header');
 
 window.addEventListener('scroll', () => {
-  if (window.scrollY > headerHeight) {
+  if (window.scrollY > header.offsetHeight) {
     menu.classList.add('floating');
   } else {
     menu.classList.remove('floating');
-}
+  }
 });
