@@ -472,41 +472,17 @@ footer {
 @media (max-width: 360px) {
   .menu {
     top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transform: none;
-    border-radius: 0;
-    width: 100%;
-    gap: 0;
-    padding: 0;
-    flex-wrap: nowrap;
-    background: linear-gradient(
-      to right,
-      rgba(0, 74, 173, 0.95),
-      rgba(0, 100, 200, 0.95)
-    );
-    border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 4px;
+    padding: 8px 10px;
+    width: auto;
   }
 
   .menu .pill {
-    flex: 1;
-    padding: 12px 8px;
-    border-radius: 0;
-    font-size: 0.75rem;
-    text-align: center;
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-  }
-
-  .menu .pill:last-child {
-    border-right: none;
-  }
-
-  body {
-    padding-bottom: 50px;
+    padding: 5px 10px;
+    font-size: 0.7rem;
   }
 
   .barra-pesquisa {
@@ -552,45 +528,20 @@ footer {
 @media (max-width: 640px) {
   .menu {
     top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transform: none;
-    border-radius: 0;
-    width: 100%;
-    gap: 0;
-    padding: 0;
-    flex-wrap: nowrap;
-    background: linear-gradient(
-      to right,
-      rgba(0, 74, 173, 0.95),
-      rgba(0, 100, 200, 0.95)
-    );
-    border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 6px;
+    padding: 8px 12px;
   }
 
   .menu .pill {
-    flex: 1;
-    padding: 12px 10px;
-    border-radius: 0;
+    padding: 6px 11px;
     font-size: 0.8rem;
-    text-align: center;
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-  }
-
-  .menu .pill:last-child {
-    border-right: none;
-  }
-
-  body {
-    padding-bottom: 50px;
   }
 
   header {
-    padding: clamp(40px, 10vw, 80px) 16px 30px;
+    padding: clamp(50px, 10vw, 80px) 16px 30px;
   }
 
   .barra-pesquisa {
