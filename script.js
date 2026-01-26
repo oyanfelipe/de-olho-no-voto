@@ -19,5 +19,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Inicializa o sistema de busca
-  new BuscaDeputados(deputados, buscaInput, resultadosDiv, projetosSection);
+  const buscaDeputados = new BuscaDeputados(deputados, buscaInput, resultadosDiv, projetosSection);
+
+  // Adiciona listeners aos links do menu
+  const menuLinks = document.querySelectorAll('.menu a');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      // Limpa a barra de pesquisa
+      buscaInput.value = '';
+      
+      // Mostra os projetos novamente
+      buscaDeputados.mostrarProjetos();
+    });
+  });
 });
+

@@ -1,6 +1,7 @@
-/* =========================================================
-   RESET & BASE (FRUTIGER AERO STYLE)
-========================================================= */
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -470,9 +471,42 @@ footer {
 /* Telas muito pequenas (até 360px) */
 @media (max-width: 360px) {
   .menu {
-    top: 8px;
-    gap: 4px;
-    padding: 6px 8px;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    border-radius: 0;
+    width: 100%;
+    gap: 0;
+    padding: 0;
+    flex-wrap: nowrap;
+    background: linear-gradient(
+      to right,
+      rgba(0, 74, 173, 0.95),
+      rgba(0, 100, 200, 0.95)
+    );
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .menu .pill {
+    flex: 1;
+    padding: 12px 8px;
+    border-radius: 0;
+    font-size: 0.75rem;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+
+  .menu .pill:last-child {
+    border-right: none;
+  }
+
+  body {
+    padding-bottom: 50px;
   }
 
   .barra-pesquisa {
@@ -516,8 +550,47 @@ footer {
 
 /* Telas pequenas (361px - 640px) */
 @media (max-width: 640px) {
+  .menu {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    border-radius: 0;
+    width: 100%;
+    gap: 0;
+    padding: 0;
+    flex-wrap: nowrap;
+    background: linear-gradient(
+      to right,
+      rgba(0, 74, 173, 0.95),
+      rgba(0, 100, 200, 0.95)
+    );
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .menu .pill {
+    flex: 1;
+    padding: 12px 10px;
+    border-radius: 0;
+    font-size: 0.8rem;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+
+  .menu .pill:last-child {
+    border-right: none;
+  }
+
+  body {
+    padding-bottom: 50px;
+  }
+
   header {
-    padding: clamp(60px, 10vw, 80px) 16px 30px;
+    padding: clamp(40px, 10vw, 80px) 16px 30px;
   }
 
   .barra-pesquisa {
