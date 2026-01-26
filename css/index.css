@@ -594,6 +594,8 @@ footer {
 /* Telas médias (641px - 768px) */
 @media (max-width: 768px) {
   .menu {
+    top: auto;
+    bottom: 20px;
     gap: 8px;
     padding: 8px 14px;
   }
@@ -647,6 +649,11 @@ footer {
 
 /* Telas grandes (769px - 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
+  .menu {
+    top: auto;
+    bottom: 20px;
+  }
+
   header {
     padding: clamp(100px, 15vw, 120px) 24px 50px;
   }
