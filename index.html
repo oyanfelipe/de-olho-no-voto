@@ -8,12 +8,12 @@
   <!-- CSS -->
   <link rel="stylesheet" href="css/index.css">
 
-  <!-- Fonte -->
-  <link href="https://fonts.googleapis.com/css2?family=Unito+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Fontes Modernas Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <!--MENU (fora do header)-->
-  <nav id="menu">
+  <nav class="menu">
     <a href="#inicio" class="pill">Início</a>
     <a href="#projetos" class="pill">Projetos</a>
     <a href="#mais" class="pill">Mais</a>
@@ -21,14 +21,20 @@
 <!--HEADER normal-->
   <header id="inicio">
   <h1>🗳️ De Olho no Voto</h1>
-  <p class="subtitulo">Saiba como seu deputado votou. Informação é poder.</p>
+  <p class="subtitulo">Transparência em ação: explore deputados e projetos que impactam direitos humanos, meio ambiente e a justiça.</p>
 
-  <input 
-    type="text" 
-    id="busca" 
-    placeholder="Digite o nome de um deputado..."
-    autocomplete="off"
-  >
+  <div class="barra-pesquisa">
+    <svg class="icone-lupa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.35-4.35"></path>
+    </svg>
+    <input 
+      type="text" 
+      id="busca" 
+      placeholder="Procure por um deputado..."
+      autocomplete="off"
+    >
+  </div>
   </header>
 
   <main>
@@ -38,8 +44,8 @@
     </section>
 
     <section id="mais">
-      <h2 class="titulo-section">📜 Mais</h2>
-      <div id="lista-projetos" class="lista-projetos"></div>
+      <h2 class="titulo-section">✨ Mais Projetos</h2>
+      <div id="lista-projetos-mais" class="lista-projetos"></div>
     </section>
 
     <section id="resultados-section">
@@ -54,7 +60,11 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="js/protecao.js"></script>
+  <script src="js/deputados.js" defer></script>
+  <script src="js/api.js" defer></script>
+  <script src="js/projetos.js" defer></script>
+  <script src="js/busca.js" defer></script>
   <script src="script.js" defer></script>
-  <script src="main.js" defer></script>
 </body>
 </html>
