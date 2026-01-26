@@ -473,13 +473,15 @@ footer {
   .menu {
     top: auto;
     bottom: 20px;
-    gap: 4px;
-    padding: 6px 8px;
+    gap: 6px;
+    padding: 8px 12px;
+    flex-wrap: nowrap;
   }
 
   .menu .pill {
-    padding: 5px 10px;
-    font-size: 0.7rem;
+    padding: 6px 11px;
+    font-size: 0.75rem;
+    white-space: nowrap;
   }
 
   .barra-pesquisa {
@@ -526,6 +528,7 @@ footer {
   .menu {
     top: auto;
     bottom: 20px;
+    flex-wrap: nowrap;
   }
 
   header {
