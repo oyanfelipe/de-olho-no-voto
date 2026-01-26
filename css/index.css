@@ -471,13 +471,9 @@ footer {
 /* Telas muito pequenas (até 360px) */
 @media (max-width: 360px) {
   .menu {
-    top: auto;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 8px;
     gap: 4px;
-    padding: 8px 10px;
-    width: auto;
+    padding: 6px 8px;
   }
 
   .menu .pill {
@@ -526,22 +522,8 @@ footer {
 
 /* Telas pequenas (361px - 640px) */
 @media (max-width: 640px) {
-  .menu {
-    top: auto;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    gap: 6px;
-    padding: 8px 12px;
-  }
-
-  .menu .pill {
-    padding: 6px 11px;
-    font-size: 0.8rem;
-  }
-
   header {
-    padding: clamp(50px, 10vw, 80px) 16px 30px;
+    padding: clamp(60px, 10vw, 80px) 16px 30px;
   }
 
   .barra-pesquisa {
